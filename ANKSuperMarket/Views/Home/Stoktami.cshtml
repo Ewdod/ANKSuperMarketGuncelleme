@@ -1,0 +1,35 @@
+﻿@model List<ANKSuperMarket.Models.Urun>
+
+<title>Ürün Listesi</title>
+
+
+<h2>Ürün Listesi</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ürün Adı</th>
+            <th>Fiyat</th>
+            <th>Stoktami</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var urun in Model)
+        {
+            <tr>
+                <td>@urun.Id</td>
+                <td>@urun.Name</td>
+                <td>@urun.Fiyat</td>
+                <td>@urun.Stoktami</td>
+
+                <td>
+                    <a asp-action="Sil" asp-route-id="@urun.Id" class="btn btn-danger">Sil</a>
+                    <a asp-action="Duzenle" asp-route-id="@urun.Id" class="btn btn-warning">Duzenle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <form method="post">
+        <button asp-controller="Home" asp-action="Stoktami" type="submit">Hepsini Goster</button>
+    </form>
+</table>
